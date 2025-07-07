@@ -1,51 +1,127 @@
 <!DOCTYPE html>
 <html lang="sq">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dhuro për Qymecin</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dhuro për rindërtimin e qymecit</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fefae0;
-      color: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
     }
-    .container {
-      border: 2px dashed #aaa;
-      padding: 40px;
-      border-radius: 12px;
-      background-color: #fff;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-    .donate-link {
-      display: inline-block;
-      margin-top: 20px;
+
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
       padding: 10px 20px;
-      font-size: 1.2rem;
-      color: white;
-      background-color: #007bff;
-      text-decoration: none;
-      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .donate-link:hover {
-      background-color: #0056b3;
+
+    .logo img {
+      height: 40px;
+    }
+
+    .campaign {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .campaign img {
+      width: 100%;
+      height: auto;
+    }
+
+    .campaign-content {
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      background-color: #e9ecef;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+      height: 20px;
+    }
+
+    .progress {
+      height: 100%;
+      width: 35%;
+      background-color: #00b964;
+      transition: width 0.5s ease;
+    }
+
+    .raised {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .story {
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .donate-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #00b964;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .donate-button:hover {
+      background-color: #009652;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Dhuro për rindërtimin e qymecit</h1>
-    <a href="https://gofundme.com/" target="_blank" class="donate-link">Shko te fushata në GoFundMe</a>
+
+  <header>
+    <div class="logo">
+      <img src="data:image/png;base64,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" alt="GoFundMe Logo" />
+    </div>
+  </header>
+
+  <div class="campaign">
+    <img src="https://kohajone.com/wp-content/uploads/2020/02/kotec.jpeg" alt="Qymeci" />
+
+    <div class="campaign-content">
+      <h1>Te rindertojme qymecin e Loles</h1>
+      <p class="raised">€3,500 mbledhur nga qëllimi prej €10,000</p>
+
+      <div class="progress-bar">
+        <div class="progress" style="width: 35%;"></div>
+      </div>
+
+      <div class="story">
+        <p>
+         Qymeci i Loles në Radhimë është prishur për ndërtimin e një rruge.
+Po përpiqemi ta rindërtojmë, që dhe djali i saj, Flori, të mund të kthehet nga Gjermania më herët, pa u detyruar të qëndrojë më gjatë për të mbledhur lekët e qymecit. . 
+        </p>
+        <p>
+        Kushdo që mundet, është i mirëpritur të kontribuojë. Faleminderit!
+        </p>
+      </div>
+
+      <a href="#" class="donate-button">Dhuro Tani</a>
+    </div>
   </div>
+
 </body>
 </html>
-
